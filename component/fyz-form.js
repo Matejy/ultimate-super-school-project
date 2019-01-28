@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from "jquery";
 
 import AddressInput from './form-components/address-input';
 import CityInput from './form-components/city-input';

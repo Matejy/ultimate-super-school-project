@@ -1,84 +1,93 @@
 import React, { Component } from 'react';
-import $ from "jquery";
 
+import NameInput from './form-components/name-input';
+import BdayInput from './/form-components/bday-input'
+import RcInput from './form-components/rc-input';
 import AddressInput from './form-components/address-input';
 import CityInput from './form-components/city-input';
-import NameInput from './form-components/name-input';
 import TelInput from './form-components/tel-input';
 import MailInput from './form-components/mail-input';
-import BdayInput from './form-components/bday-input';
-import RcInput from './form-components/rc-input';
-import NationalityInput from './form-components/nationality-input';
 
 export default class FyzNonForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: 'zmeň sa',
-            bday: '',
-            rc: '',
-            nat: '',
-            ads: '',
-            city: '',
-            tel: '',
-            mail: ''
+            nameInput: '',
+            bdayInput: '',
+            rcInput: '',
+            // natInput: '',
+            adsInput: '',
+            cityInput: '',
+            telInput: '',
+            mailInput: '',
+            definition: '',
         };
 
     this.handleNameInput = this.handleNameInput.bind(this);
     this.handleBdayInput = this.handleBdayInput.bind(this);
     this.handleRcInput = this.handleRcInput.bind(this);
-    this.handleNationality = this.handleNationality.bind(this);
+    // this.handleNationality = this.handleNationality.bind(this);
     this.handleAddressInput = this.handleAddressInput.bind(this);
     this.handleCityInput = this.handleCityInput.bind(this);
     this.handleTelInput = this.handleTelInput.bind(this);
     this.handleMailInput = this.handleMailInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.handleDefinitionInput = this.handleDefinitionInput.bind(this);
     }
-    handleNameInput(event) {
-        this.setState({name: event.target.value});
+    handleNameInput = (name) => {
+        this.setState({nameInput: name });
     }
-    handleBdayInput(event) {
-        this.setState({bday: event.target.value});
+    handleBdayInput = (bday) => {
+        this.setState({bdayInput: bday});
     }
-    handleRcInput(event) {
-        this.setState({rc: event.target.value});
+    handleRcInput = (rc) => {
+        this.setState({rcInput: rc});
     }
-    handleNationality(event) {
-        this.setState({nat: event.target.value});
+    // handleNationality(nat) {
+    //     this.setState({natInput: nat});
+    // }
+    handleAddressInput = (ads) => {
+        this.setState({adsInput: ads});
     }
-    handleAddressInput(event) {
-        this.setState({ads: event.target.value});
+    handleCityInput = (city) => {
+        this.setState({cityInput: city});
     }
-    handleCityInput(event) {
-        this.setState({city: event.target.value});
+    handleTelInput = (tel) => {
+        this.setState({telInput: tel});
     }
-    handleTelInput(event) {
-        this.setState({tel: event.target.value});
+    handleMailInput = (mail) => {
+        this.setState({mailInput: mail});
     }
-    handleMailInput(event) {
-        this.setState({mail: event.target.value});
+    handleDefinitionInput(event) {
+        this.setState({definition: event.target.value});
     }
     handleSubmit(event) {
-        alert("fungujem");
-        alert("its working " + this.state.name + this.state.bday + this.state.rc + this.state.nat + this.state.ads + this.state.city + this.state.tel + this.state.mail);
+        alert("Začiatok " + this.state.nameInput + " " + this.state.bdayInput + " " + this.state.rcInput + " " + this.state.adsInput + " " + this.state.cityInput + " " + this.state.telInput + " " + this.state.mailInput + " Koniec..." );
+        alert("Začiatok " + this.state.definition + " " + this.state.listDataFromChild + " " + this.state.rc + "" + this.state.nat + " " + this.state.ads + " " + this.state.city + " " + this.state.tel + " " + this.state.mail + " Koniec..." );
         event.preventDefault();
     }
     render() {
         return(
             <form className="Fyz-non-form" onSubmit={this.handleSubmit}>
                 <label>Osobné informácie</label>
-                <NameInput value={this.state.name} onChange={this.handleNameInput}/>
-                <BdayInput value={this.state.bday} onChange={this.handleBdayInput}/>
-                <RcInput value={this.state.rc} onChange={this.handleRcInput}/>
-                <NationalityInput value={this.state.nat} onChange={this.handleNationality}/>
-                <AddressInput value={this.state.ads} onChange={this.handleAddressInput}/>
-                <CityInput value={this.state.city} onChange={this.handleCityInput}/>
+                <NameInput onHandleName={this.handleNameInput} />
+                {/* <input type="text" className="form-control" placeholder="Krstné meno" name="name" onChange={this.handleNameInput}/> */}
+                <BdayInput onHandleBday={this.handleBdayInput} />
+                <RcInput onHandleRc={this.handleRcInput} />
+                <AddressInput onHandleAds={this.handleAddressInput} />
+                <CityInput onHandleCity={this.handleCityInput} />
                 <label>Kontaktné informácie</label>
-                <TelInput value={this.state.tel} onChange={this.handleTelInput}/>
-                <MailInput value={this.state.mail} onChange={this.handleMailInput}/>
+                <TelInput onHandleTel={this.handleTelInput} />
+                <MailInput onHandleMail={this.handleMailInput} />
+                <label>Právne veci</label>
+                <div className="form-group">
+                    <h1>Definícia</h1>
+                    <label htmlFor="inputDefinition"> V tejto zmluve "Dar" znamená
+                        <input type="text" className="form-control" id="inputDefinition" placeholder="Počítač" name="definition" onChange={this.handleDefinitionInput} />
+                    </label>
+                </div>
                 <input type="submit"  value="Submit"/>
             </form>
         )
     }
-}
+};

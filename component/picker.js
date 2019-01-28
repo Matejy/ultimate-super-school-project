@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import anime from '/Users/matejmadara/dofe-app/daruj-skole/node_modules/animejs/lib/anime.es.js';
 import $ from "jquery";
 
 import FyzNonForm from './fyz-non-form';
@@ -16,7 +15,6 @@ export default class PickerForm extends Component {
         this.setState({value: event.target.value});
     }
     handleSubmit(event) {
-        alert('vybral si: ' + this.state.value);
         event.preventDefault();
         if(this.state.value === 'fyz-non') {
             $(document).ready(function(){
