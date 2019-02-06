@@ -7,6 +7,7 @@ import TelInput from './form-components/tel-input';
 import MailInput from './form-components/mail-input';
 import BdayInput from './form-components/bday-input';
 import RcInput from './form-components/rc-input';
+import PropInput from './form-components/prop-input';
 
 export default class FyzForm extends Component {
     handleSubmit(event) {
@@ -25,6 +26,7 @@ export default class FyzForm extends Component {
                 <label>Kontaktné informácie</label>
                 <TelInput />
                 <MailInput />
+                <PropInput />
                 <input type="submit"  value="Submit"/>
             </form>
         )

@@ -12,7 +12,7 @@ export default class NameInput extends React.Component {
     }
     render() {
         return(
-            <input type="text" className="form-control" placeholder="Krstné meno" value={this.state.value}  onChange={this.handleNameInputChange} ref={(ref) => this.refers = ref} name="name"/>
+            <input type="text" className="form-control" placeholder="Meno" value={this.state.value}  onChange={this.handleNameInputChange} ref={(ref) => this.refers = ref} name="name"/>
         )
     }
 };
