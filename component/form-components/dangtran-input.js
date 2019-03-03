@@ -16,11 +16,13 @@ export default class Dangtran extends React.Component {
     render() {
         return(
             <div className="form-group">
-                <label>5. Prechod nebezpečenstva zmluvy</label>
-                <label>5.1 Nebezpečenstvo škody na Dare prechádza z Darcu na Obdarovaného momentom</label>
+                <div id="dangtran">
+                    <p>5. Prechod nebezpečenstva zmluvy</p>
+                    <p>5.1 Nebezpečenstvo škody na Dare prechádza z Darcu na Obdarovaného momentom</p>
+                </div>
                 <select className="form-control form-control-lg" id="type-picker" onChange={this.handleChange} ref={(ref) => this.refers = ref} >
-                    <option value="type1">Uzavretia zmluvy</option>
-                    <option value="type2">Prevzatia Daru darovaným</option>
+                    <option value="type1" id="dangtran1">Uzavretia zmluvy</option>
+                    <option value="type2" id="dangtran2">Prevzatia Daru darovaným</option>
                 </select>
             </div>
         )
