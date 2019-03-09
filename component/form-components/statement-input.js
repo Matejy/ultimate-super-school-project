@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+var id = 0;
 export default class StatementInput extends Component {
     constructor(props) {
         super(props);
@@ -8,27 +9,39 @@ export default class StatementInput extends Component {
             };
         this.handleStatementInputChange = this.handleStatementInputChange.bind(this);
     }
-    handleStatementInputChange(event) {
-        var statement = this.refers.value;
-        this.props.onHandleStatement(statement);            
+    generateInput = () => {
+        var ds = true;
+        if(ds===true) {
+            id = id + 11;
+            ds=false;
+        }
+        var stringId = '' + id;
+        var stringName = 'textarea' + id;
+        var render = document.createElement('textarea');
+        render.setAttribute('className', 'form-control');
+        render.setAttribute('id', stringId);
+        render.setAttribute('rows', '5');
+        render.setAttribute('cols', '50');
+        render.setAttribute('value', 'default');
+        render.setAttribute('name', stringName);
+        render.addEventListener('onclick', this.handleStatementInputChange());
+        var curentDiv = document.getElementById("spb1");
+        var parentDiv = document.getElementById("parent1");
+        parentDiv.insertBefore(render, curentDiv);
     }
-    handleView = (event) => {
-        this.setState({ viewTextarea: event.target.name});
+    handleStatementInputChange() {
+        console.log("pisem sa dvakrat?");
     }
     render() {
         return(
             <div className="form-group">
-                <label>3. Vyhlásenia</label><br/>
-                <label>3.1 Darca vyhlasuje, že je výlučným vlastníkom Daru.</label>
-                <div> 3.2 Obdarovaný vyhlasuje, že si Dar riadne prezrel a oboznámil sa so stavom Daru pred uzavretím tejto Zmluvy.
-                    <br/><button className="btn btn-outline-primary" type="button" name="textarea" onClick={this.handleView}>Pridať ďalšie vyhlásenie</button> 
+                <div id="statement">
+                    <p>3. Vyhlásenia</p>
+                    <p>3.1 Darca vyhlasuje, že je výlučným vlastníkom Daru.</p>
+                    <p>3.2 Obdarovaný vyhlasuje, že si Dar riadne prezrel a oboznámil sa so stavom Daru pred uzavretím tejto Zmluvy.</p>
                 </div>
-                <div>
-                    {this.state.viewTextarea === "textarea" && 
-                    <div>
-                    <textarea className="form-control" id="inputStatement" rows="5" cols="50" name="statement" value={this.state.value}  onChange={this.handleStatementInputChange} ref={(ref) => this.refers = ref}></textarea>
-                    <button className="btn btn-outline-primary" type="button" name="hide" onClick={this.handleView}>Hide</button>
-                    </div> }
+                <div id="parent1">
+                <button className="btn btn-outline-primary" type="button" name="textarea" id="spb1" onClick={this.generateInput}>+</button> 
                 </div>
             </div>
         )

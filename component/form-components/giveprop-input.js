@@ -21,8 +21,11 @@ export default class GivepropInput extends Component {
     render() {
         return(
             <div className="form-group">
-                <label>4. Odovzdanie daru</label>
-                <div>4.1 Darca je povinný odovzdať Dar obdarovanému
+                <div id="giveprop">
+                    <p>4. Odovzdanie daru</p>
+                    <p>4.1 Darca je povinný odovzdať Dar obdarovanému</p>
+                </div>
+                <div>
                     <select className="form-control form-control-lg" id="type-picker" onChange={this.handleChange} ref={(ref) => this.refers = ref} >
                         <option value="onDisclose" name="onDisclose" >pri uzavretí Zmluvy</option>
                         <option value="inTime" name="inTime">v lehote</option>

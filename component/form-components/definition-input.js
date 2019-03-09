@@ -13,10 +13,12 @@ export default class DefinitionInput extends Component {
     }
     render() {
         return(
-            <div className="form-group"> 1. Definícia <br/>
-                <label htmlFor="inputDefinition"> 1.1 V tejto zmluve "Dar" znamená
-                    <input type="text" className="form-control" id="inputDefinition" placeholder="Počítač" name="definition" value={this.state.value}  onChange={this.handleDefinitionInputChange} ref={(ref) => this.refers = ref} />
-                </label>
+            <div className="form-group">
+                <div id="definition">
+                    <p>1. Definícia</p>
+                    <p>1.1 V tejto zmluve "Dar" znamená</p>
+                </div>
+                <input type="text" className="form-control" id="inputDefinition" placeholder="Počítač" name="definition" value={this.state.value}  onChange={this.handleDefinitionInputChange} ref={(ref) => this.refers = ref} />
             </div>
         )
     }
