@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+var id = 0;
 export default class IssuesInput extends Component {
     constructor(props) {
         super(props);
@@ -23,17 +24,38 @@ export default class IssuesInput extends Component {
     handleClick = (event) => {
         this.setState({ viewInput: event.target.name})
     }
+    generateInput = () => {
+        if(this.state.type === "type4"){
+            var ds = true;
+            if(ds===true) {
+                id = id + 111111;
+                ds=false;
+            }
+            var stringId = '' + id;
+            var stringName = 'input' + id;
+            var render = document.createElement('input');
+            render.setAttribute('className', 'form-control');
+            render.setAttribute('id', stringId);
+            render.setAttribute('name', stringName);
+            var currentDiv = document.getElementById("spbi");
+            var parentDiv = document.getElementById("parenti");
+            parentDiv.insertBefore(render, currentDiv);
+        }
+    }
     render() {
         return(
             <div className="form-group">
-                <label>6. Vady daru</label>
-                <div>Darca vyhlasuje že dar je
-                    <select className="form-control form-control-lg" id="type-picker" onChange={this.handleChange} ref={(ref) => this.refers = ref} >
-                        <option value="type1" name="type1" >Je bez vád</option>
-                        <option value="type2" name="type2">má následujúce vady</option>
-                    </select>
+                <div id="issues">
+                    <p>6. Vady daru</p>
+                    <p>Darca vyhlasuje že dar je</p>
                 </div>
                 <div>
+                    <select className="form-control form-control-lg" id="type-picker" onChange={this.handleChange} ref={(ref) => this.refers = ref} >
+                        <option value="type3" >Je bez vád</option>
+                        <option value="type4">má následujúce vady</option>
+                    </select>
+                </div>
+                {/* <div>
                     {this.state.type === "type2" && 
                     <div>
                         <input type="text" className="form-control" placeholder="Popis vady" ref={(ref) => this.refers = ref} value={this.state.value}  onChange={this.handleIssuesInputChange}/>
@@ -42,6 +64,9 @@ export default class IssuesInput extends Component {
                         <input type="text" className="form-control" placeholder="Popis vady" ref={(ref) => this.refers = ref} value={this.state.value}  onChange={this.handleIssuesInputChange}/>
                         } 
                     </div>}
+                </div> */}
+                <div id="parenti">
+                <button className="btn btn-outline-danger" type="button" name="inputb" id="spbi" onClick={this.generateInput}>+</button> 
                 </div>
             </div>
         )

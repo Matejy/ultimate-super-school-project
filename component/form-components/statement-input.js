@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 var id = 0;
 export default class StatementInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            statement: '',
-            viewTextarea: ''
-            };
-        this.handleStatementInputChange = this.handleStatementInputChange.bind(this);
-    }
     generateInput = () => {
         var ds = true;
         if(ds===true) {
@@ -24,13 +16,9 @@ export default class StatementInput extends Component {
         render.setAttribute('cols', '50');
         render.setAttribute('value', 'default');
         render.setAttribute('name', stringName);
-        render.addEventListener('onclick', this.handleStatementInputChange());
         var curentDiv = document.getElementById("spb1");
         var parentDiv = document.getElementById("parent1");
         parentDiv.insertBefore(render, curentDiv);
-    }
-    handleStatementInputChange() {
-        console.log("pisem sa dvakrat?");
     }
     render() {
         return(

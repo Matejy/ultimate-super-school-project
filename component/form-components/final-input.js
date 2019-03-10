@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
+var id = 0; 
 export default class FinalInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            statement: '',
-            viewTextarea: ''
-            };
-        this.handleStatementInputChange = this.handleStatementInputChange.bind(this);
-    }
-    handleStatementInputChange(event) {
-        var statement = this.refers.value;
-        this.props.onHandleStatement(statement);            
-    }
-    handleView = (event) => {
-        this.setState({ viewTextarea: event.target.name});
+    generateInput = () => {
+        var ds = true;
+        if(ds===true) {
+            id = id + 11111;
+            ds=false;
+        }
+        var stringId = '' + id;
+        var stringName = 'textarea' + id;
+        var render = document.createElement('textarea');
+        render.setAttribute('className', 'form-control');
+        render.setAttribute('id', stringId);
+        render.setAttribute('rows', '5');
+        render.setAttribute('cols', '50');
+        render.setAttribute('value', 'default');
+        render.setAttribute('name', stringName);
+        var curentDiv = document.getElementById("spb4");
+        var parentDiv = document.getElementById("parent4");
+        parentDiv.insertBefore(render, curentDiv);
     }
     render() {
         return(
@@ -29,15 +34,8 @@ export default class FinalInput extends Component {
                     <p>9.7 Táto Zmluva nadobúda platnosť a účinnosť okamihom jej podpisu všetkými Zmluvnými stranami.</p>
                     <p>9.8 Zmluvné strany vyhlasujú, že si Zmluvu prečítali, porozumeli jej obsahu a na znak súhlasu s ňou ju slobodne, vážne, nie v tiesni ani za nápadne nevýhodných podmienok podpisujú.</p>
                 </div>
-                <div> 
-                    <br/><button className="btn btn-outline-primary" type="button" name="textarea" onClick={this.handleView}>Pridať ďalšie vyhlásenie</button> 
-                </div>
-                <div>
-                    {this.state.viewTextarea === "textarea" && 
-                    <div>
-                    <textarea className="form-control" id="inputStatement" rows="5" cols="50" name="final" value={this.state.value}  onChange={this.handleStatementInputChange} ref={(ref) => this.refers = ref}></textarea>
-                    <button className="btn btn-outline-primary" type="button" name="hide" onClick={this.handleView}>Hide</button>
-                    </div> }
+                <div id="parent4">
+                <button className="btn btn-outline-primary" type="button" name="textarea" id="spb4" onClick={this.generateInput}>+</button> 
                 </div>
             </div>
         )

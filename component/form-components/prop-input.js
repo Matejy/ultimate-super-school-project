@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 var id = 0;
 export default class PropInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            prop: '',
-            viewTextarea: '',
-            };
-        this.handlePropInputChange = this.handlePropInputChange.bind(this);
-    }
     generateInput = () => {
         var ds = true;
         if(ds===true) {
@@ -24,14 +16,9 @@ export default class PropInput extends Component {
         render.setAttribute('cols', '50');
         render.setAttribute('value', 'default');
         render.setAttribute('name', stringName);
-        render.addEventListener('onclick', this.handlePropInputChange());
         var curentDiv = document.getElementById("spb");
         var parentDiv = document.getElementById("parent");
         parentDiv.insertBefore(render, curentDiv);
-    }
-
-    handlePropInputChange() {
-        console.log("pisem sa dvakrat?");
     }
     render() {
         return(
