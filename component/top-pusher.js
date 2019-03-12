@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
-
 import Form from './form'
 
 export default class TopPusher extends React.Component {

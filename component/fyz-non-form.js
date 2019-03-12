@@ -135,22 +135,25 @@ export default class FyzNonForm extends React.Component {
         var propID = document.getElementById("1");
         var propText = document.getElementById("prop").innerText;
         var counter = 1;
-        var predlohaCounter = 2.2;
+        var predlohaFixCounter = 2;
+        var predlohaCounter = 2;
         if(propID == null) {
             console.log("Nezadaný vstup");
             propID = null;
         }
         var propsSave = propText;
         try{
-            propsSave = propText + "\n" + predlohaCounter + " " + propID.value;
-            while(propID != null) {
-                counter = counter + 1;
-                var counterToString = '' + counter;
-                propID = document.getElementById(counterToString);
-                predlohaCounter = predlohaCounter + 0.1;
-                var roundedNumber = Math.round(predlohaCounter * 10) / 10;
-                predlohaCounter = roundedNumber;
-                propsSave = propsSave + "\n" + predlohaCounter + " " + propID.value;
+            if(propID.value !== "") {
+                propsSave = propText + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + propID.value;
+                while(propID != null) {
+                    counter = counter + 1;
+                    var counterToString = '' + counter;
+                    propID = document.getElementById(counterToString);
+                    predlohaCounter = predlohaCounter + 1;
+                    var roundedNumber = Math.round(predlohaCounter * 100) / 100;
+                    predlohaCounter = roundedNumber;
+                    propsSave = propsSave + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + propID.value;
+                }
             }
         }
         catch(err) {
@@ -159,23 +162,26 @@ export default class FyzNonForm extends React.Component {
         // STATEMENT
         var statementID = document.getElementById("11");
         var statementText = document.getElementById("statement").innerText;
-        var counter = 1;
-        var predlohaCounter = 3.3;
+        var counter = 11;
+        var predlohaFixCounter = 3;
+        var predlohaCounter = 3;
         if(statementID == null) {
             console.log("Nezadaný vstup");
             statementID = null;
         }
         var statementSave = statementText;
         try{
-            statementSave = statementText + "\n" + predlohaCounter + " " + statementID.value;
-            while(statementID != null) {
-                counter = counter + 1;
-                var counterToString = '' + counter;
-                statementID = document.getElementById(counterToString);
-                predlohaCounter = predlohaCounter + 0.1;
-                var roundedNumber = Math.round(predlohaCounter * 10) / 10;
-                predlohaCounter = roundedNumber;
-                statementSave = statementSave + "\n" + predlohaCounter + " " + statementID.value;
+            if(statementID.value !== "") {
+                statementSave = statementText + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + statementID.value;
+                while(statementID != null) {
+                    counter = counter + 11;
+                    var counterToString = '' + counter;
+                    statementID = document.getElementById(counterToString);
+                    predlohaCounter = predlohaCounter + 1;
+                    var roundedNumber = Math.round(predlohaCounter * 100) / 100;
+                    predlohaCounter = roundedNumber;
+                    statementSave = statementSave + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + statementID.value;
+            }
             }
         }
         catch(err) {
@@ -184,34 +190,37 @@ export default class FyzNonForm extends React.Component {
         // CALLBACK
         var callbackID = document.getElementById("111");
         var callbackText = document.getElementById("callback").innerText;
-        var counter = 1;
-        var predlohaCounter = 7.3;
+        var counter = 111;
+        var predlohaFixCounter = 7;
+        var predlohaCounter = 3;
         if(callbackID == null) {
             console.log("Nezadaný vstup");
             callbackID = null;
         }
         var callbackSave = callbackText;
         try{
-            callbackSave = callbackText + "\n" + predlohaCounter + " " + callbackID.value;
-            while(callbackID != null) {
-                counter = counter + 1;
-                var counterToString = '' + counter;
-                callbackID = document.getElementById(counterToString);
-                predlohaCounter = predlohaCounter + 0.1;
-                var roundedNumber = Math.round(predlohaCounter * 10) / 10;
-                predlohaCounter = roundedNumber;
-                callbackSave = callbackSave + "\n" + predlohaCounter + " " + callbackID.value;
+            if(callbackID.value !== "") {
+                callbackSave = callbackText + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + callbackID.value;
+                while(callbackID != null) {
+                    counter = counter + 111;
+                    var counterToString = '' + counter;
+                    callbackID = document.getElementById(counterToString);
+                    predlohaCounter = predlohaCounter + 1;
+                    var roundedNumber = Math.round(predlohaCounter * 100) / 100;
+                    predlohaCounter = roundedNumber;
+                    callbackSave = callbackSave + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + callbackID.value;
+                }
             }
         }
         catch(err) {
             console.log(err);
         }
         // ISSUES
-        alert(this.state.issuesInput);
         var issuesID = document.getElementById("111111");
         var issuesText = document.getElementById("issues").innerText;
-        var counter = 1;
-        var predlohaCounter = 6.1;
+        var counter = 111111;
+        var predlohaFixCounter = 6;
+        var predlohaCounter = 1;
         if(issuesID == null) {
             console.log("Nezadaný vstup");
             issuesID = null;
@@ -221,13 +230,13 @@ export default class FyzNonForm extends React.Component {
             if(this.state.typeIssues === "type4") {
                 issuesSave = issuesText + " " + "má následujúce vady" + "\n" + predlohaCounter + " " + issuesID.value;
                 while(issuesID != null) {
-                    counter = counter + 1;
+                    counter = counter + 111111;
                     var counterToString = '' + counter;
                     issuesID = document.getElementById(counterToString);
-                    predlohaCounter = predlohaCounter + 0.1;
-                    var roundedNumber = Math.round(predlohaCounter * 10) / 10;
+                    predlohaCounter = predlohaCounter + 1;
+                    var roundedNumber = Math.round(predlohaCounter * 100) / 100;
                     predlohaCounter = roundedNumber;
-                    issuesSave = issuesSave + "\n" + predlohaCounter + " " + issuesID.value;
+                    issuesSave = issuesSave + "\n" +  predlohaFixCounter + "." + predlohaCounter  + " " + issuesID.value;
                 }
             }
             else {
@@ -240,23 +249,26 @@ export default class FyzNonForm extends React.Component {
         // ARBITER 
         var arbiterID = document.getElementById("1111");
         var arbiterText = document.getElementById("arbiter").innerText;
-        var counter = 1;
-        var predlohaCounter = 8.2;
+        var counter = 1111;
+        var predlohaFixCounter = 8;
+        var predlohaCounter = 2;
         if(arbiterID == null) {
             console.log("Nezadaný vstup");
             arbiterID = null;
         }
         var arbiterSave = arbiterText;
         try{
-            arbiterSave = arbiterText + "\n" + predlohaCounter + " " + arbiterID.value;
-            while(arbiterID != null) {
-                counter = counter + 1;
-                var counterToString = '' + counter;
-                arbiterID = document.getElementById(counterToString);
-                predlohaCounter = predlohaCounter + 0.1;
-                var roundedNumber = Math.round(predlohaCounter * 10) / 10;
-                predlohaCounter = roundedNumber;
-                arbiterSave = arbiterSave + "\n" + predlohaCounter + " " + arbiterID.value;
+            if(arbiterID.value !== "") {
+                arbiterSave = arbiterText + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + arbiterID.value;
+                while(arbiterID != null) {
+                    counter = counter + 1111;
+                    var counterToString = '' + counter;
+                    arbiterID = document.getElementById(counterToString);
+                    predlohaCounter = predlohaCounter + 1;
+                    var roundedNumber = Math.round(predlohaCounter * 100) / 100;
+                    predlohaCounter = roundedNumber;
+                    arbiterSave = arbiterSave + "\n" + predlohaFixCounter + "." + predlohaCounter + " " + arbiterID.value;
+                }
             }
         }
         catch(err) {
@@ -265,28 +277,32 @@ export default class FyzNonForm extends React.Component {
         // FINAL
         var finalID = document.getElementById("11111");
         var finalText = document.getElementById("final").innerText;
-        var counter = 1;
-        var predlohaCounter = 9.9;
+        var counter = 11111;
+        var predlohaFixCounter = 9
+        var predlohaCounter = 9;
         if(finalID == null) {
             console.log("Nezadaný vstup");
             finalID = null;
         }
         var finalSave = finalText;
         try{
-            finalSave = finalText + "\n" + predlohaCounter + " " + finalID.value;
-            while(finalID != null) {
-                counter = counter + 1;
-                var counterToString = '' + counter;
-                finalID = document.getElementById(counterToString);
-                predlohaCounter = predlohaCounter + 0.1;
-                var roundedNumber = Math.round(predlohaCounter * 10) / 10;
-                predlohaCounter = roundedNumber;
-                finalSave = finalSave + "\n" + predlohaCounter + " " + finalID.value;
+            if(finalID.value !== "") {
+                finalSave = finalText + "\n" + predlohaFixCounter + "." +  predlohaCounter + " " + finalID.value;
+                while(finalID != null) {
+                    counter = counter + 11111;
+                    var counterToString = '' + counter;
+                    finalID = document.getElementById(counterToString);
+                    predlohaCounter = predlohaCounter + 1;
+                    var roundedNumber = Math.round(predlohaCounter * 100) / 100;
+                    predlohaCounter = roundedNumber;
+                    finalSave = finalSave + "\n" + predlohaFixCounter + "." +  predlohaCounter + " " + finalID.value;
+                }
             }
         }
         catch(err) {
             console.log(err);
         }
+        // FORMULÁR
         var doc = new jsPDF("mm")
         doc.addFileToVFS("AbhayaLibre-Regular.ttf", font)
         doc.addFont("AbhayaLibre-Regular.ttf", "AbhayaLibre", "regular")

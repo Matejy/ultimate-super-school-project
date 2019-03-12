@@ -3,7 +3,7 @@ var id = 0;
 export default class ArbiterInput extends Component {
     generateInput = () => {
         var ds = true;
-        if(ds===true) {
+        while(ds===true) {
             id = id + 1111;
             ds=false;
         }

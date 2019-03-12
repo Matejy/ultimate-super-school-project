@@ -35,7 +35,7 @@ export default class FinalInput extends Component {
                     <p>9.8 Zmluvné strany vyhlasujú, že si Zmluvu prečítali, porozumeli jej obsahu a na znak súhlasu s ňou ju slobodne, vážne, nie v tiesni ani za nápadne nevýhodných podmienok podpisujú.</p>
                 </div>
                 <div id="parent4">
-                <button className="btn btn-outline-primary" type="button" name="textarea" id="spb4" onClick={this.generateInput}>+</button> 
+                <button className="btn btn-outline-primary" type="button" name="" id="spb4" onClick={this.generateInput}>+</button> 
                 </div>
             </div>
         )
