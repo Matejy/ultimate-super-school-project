@@ -15,6 +15,7 @@ export default class PickerForm extends Component {
         this.setState({value: event.target.value});
     }
     handleSubmit(event) {
+        this.props.onSubmitFP();            
         event.preventDefault();
         if(this.state.value === 'fyz-non') {
             $(document).ready(function(){
@@ -39,18 +40,18 @@ export default class PickerForm extends Component {
     }
     render() {
         return (
-            <div>
+            <div id="form-picker">
                 <FyzNonForm />
                 <FyzForm />
                 <form onSubmit={this.handleSubmit} className="PickerForm">
-                    <label for="form-picker">Zvolte možnosť</label>
-                    <select className="form-control form-control-lg" id="form-picker" value={this.state.value} onChange={this.handleChange}>
+                    <p>Zvolte typ osoby, fyzická/právnická</p>
+                    <select className="form-control form-control-lg" value={this.state.value} onChange={this.handleChange}>
                         <option selected value="fyz-non" className="fyz-os">Fyzická osoba</option>
                         <option value="fyz">Fyzická osoba podnikateľského typu</option>
                         <option value="pra">Právnická osoba</option>
                         <option value="ins">Inštitúcia</option>
                     </select>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" /> 
                 </form>
             </div>
         )

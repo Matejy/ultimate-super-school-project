@@ -15,7 +15,7 @@ export default class GivepropInput extends Component {
     }
     handleChange(event) {
         var type = this.refers.value;
-        this.props.onHandleType(type);
+        this.props.onHandleTypeGive(type);
         this.setState({type: event.target.value});
     }
     render() {
