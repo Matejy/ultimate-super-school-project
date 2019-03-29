@@ -1,24 +1,50 @@
-import React from 'react'; 
-var selectedSchool = undefined;
+import React from 'react';
+import Autosuggest from 'react-autosuggest';
+var data = require('../school-data/schools.json');
+const getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+  
+    return inputLength === 0 ? [] : data.filter(lang =>
+      lang.ulica.toLowerCase().slice(0, inputLength) === inputValue
+    );
+};
+const getSuggestionValue = suggestion => suggestion.ulica;
+const renderSuggestion = suggestion => (
+    <div>
+      {suggestion.ulica}
+    </div>
+  );
 export default class SchoolPicker extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {searchQ: ''};
-        this.findQ = this.findQ.bind(this);
-        this.handleSubmitQ = this.handleSubmitQ.bind(this);
+        this.state = {
+            value: '',
+            suggestions: []
+        };
+        this.handleSchoolData = this.handleSchoolData.bind(this);
     }
-    findQ(event) {
-        var searchQ = this.refers.value;
-        // alert(searchQ)
-        // this.props.searchQResult(searchQ);
-    }
-    handleSubmitQ(event) {
+    onChange = (event, { newValue }) => {
+        this.setState({
+          value: newValue
+        });
+      };
+    onSuggestionsFetchRequested = ({ value }) => {
+        this.setState({
+          suggestions: getSuggestions(value)
+        });
+    };
+    onSuggestionsClearRequested = () => {
+        this.setState({
+          suggestions: []
+        });
+    };
+    handleSchoolData(event) {  
         var data = require('../school-data/schools.json');
-        var searchQ = this.refers.value;
         var selectedSchool = undefined;
-        if(searchQ !== "") {
+        if(this.state.value !== "") {
             for ( var i = 0; i < data.length; i++) {
-                if(data[i].ulica === searchQ) {
+                if(data[i].ulica === this.state.value) {
                     console.log(data[i].psc);
                     console.log(data[i].nazov);
                     console.log(data[i].ulica);
@@ -29,40 +55,48 @@ export default class SchoolPicker extends React.Component {
                     console.log(data[i].adrwww);
                     console.log("--------------");
                     selectedSchool = [data[i].nazov, data[i].ulica, data[i].miesto, data[i].psc, data[i].cistel, data[i].email, data[i].kodsko];
-                    var statusSP = true;
+                    var statusInput = true;
                 }
-                // else if(selectedSchool = null) {
-                //     alert("Ey")
-                // }
             }
         }
         else {
             alert("Zadajte vstup prosim")
-            statusSP = false;
+            statusInput = false;
         }
-        console.log(statusSP + "1")
-        if(statusSP === undefined) {
+        console.log(statusInput + "1")
+        if(statusInput === undefined) {
             alert("Prosím zadajte platný vstup");
         }
-        this.props.onSubmitSP(statusSP); 
+        this.props.onSubmitSP(statusInput); 
         this.props.pickedSchool(selectedSchool);
         event.preventDefault();  
     }
-    render() {
-        // window.onload = function() {
-        //     var data = require('../school-data/schools.json');
-        //     for(var i = 0; i <data.length; i++) {
-        //     var obj = data[i];
-        //     console.log("Name " + obj);
-        //     }
-        // }
+    render() { 
+        const { value, suggestions } = this.state;
+        const inputProps = {
+          placeholder: 'Zadajte adresu školy',
+          value,
+          onChange: this.onChange,
+
+        };
         return(
-            <div id="school-picker">
-                <h5> Zvolte školu ktorej chcete darovať</h5>
+            <div id="school-picker" className="form-group">
+                <h5>Zvolte školu ktorej chcete darovať</h5>
                 <p>Zadajte adresu školy</p>
-                <form onSubmit={this.handleSubmitQ} class="form-group" autoComplete="off">
-                    <div class="autocomplete">
-                        <input class="form-control" type="search" id="school-search" value={this.state.value} name="q" onChange={this.findQ} ref={(ref) => this.refers = ref}/>
+                <form onSubmit={this.handleSchoolData} class="form-group">
+                    <div>
+                    <Autosuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={inputProps}
+                        ref={(ref) => this.refers = ref}
+                        value={this.state.value}
+                    />
+                    
+                        {/* <input class="form-control" type="search" id="school-search" onChange={this.indexSchools}value={this.state.value} ref={(ref) => this.refers = ref}/> */}
                     </div>
                     <input type="submit" value="Submit"></input>
                 </form>
@@ -70,4 +104,3 @@ export default class SchoolPicker extends React.Component {
         )
     }
 }
-export { selectedSchool as SS };

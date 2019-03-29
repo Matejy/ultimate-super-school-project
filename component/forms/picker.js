@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import $ from "jquery";
-
-import FyzNonForm from './fyz-non-form';
-import FyzForm from './fyz-form';
-
+import FyzNonForm from './form-0';
+import FyzForm from './form-1';
+import $ from 'jquery';
 export default class PickerForm extends Component {
     constructor(props) {
         super(props);

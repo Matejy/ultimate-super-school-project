@@ -2,28 +2,26 @@ import React, { Component } from 'react';
 import PickerForm from './forms/picker';
 import SchoolPicker from './school-data/school-picker';
 import anime from '/Users/matejmadara/dofe-app/daruj-skole/node_modules/animejs/lib/anime.es.js';
-
-var schoolPicker = document.getElementById('school-picker');
-var formPicker = document.getElementById('form-picker');
 var pickedSchoolExport = undefined;
-
+var pickedSchoolSep = undefined;
 export default class TopPusher extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            statusSPin : false,
+            statusInputSwitch : false,
             pickedSchoolin : []
         }
         this.onSubmitSPin = this.onSubmitSPin.bind(this);
         this.onSubmitFP = this.onSubmitFP.bind(this);
     }
     pickedSchoolin = (pickedSchool) => {
-        this.setState({pickedSchoolin: pickedSchool});
-        pickedSchoolExport = pickedSchool;
+            this.setState({pickedSchoolin: pickedSchool});
+            pickedSchoolExport = pickedSchool;
+            pickedSchoolSep = pickedSchool[0] + " " + pickedSchool[1];
     }
-    onSubmitSPin = (statusSP) => {
-        this.setState({statusSPin: statusSP})
-        if(statusSP == true ) {
+    onSubmitSPin = (statusInput) => {
+        this.setState({statusInputSwitch: statusInput})
+        if(statusInput === true ) {
             var schoolPicker = document.getElementById('school-picker');
             var formPicker = document.getElementById('form-picker');
             anime({
@@ -35,7 +33,7 @@ export default class TopPusher extends React.Component {
                 opacity: 0
             });
         }
-        console.log(statusSP + "2");
+        console.log(statusInput + "2");
     }
     onSubmitFP() {
         var schoolPicker = document.getElementById('school-picker');
@@ -45,8 +43,7 @@ export default class TopPusher extends React.Component {
         });
     }
     render() {
-        window.onload = function hide() {
-            var schoolPicker = document.getElementById('school-picker');
+        window.onload = function() {
             var formPicker = document.getElementById('form-picker');
             anime({
                 targets: formPicker,
@@ -72,5 +69,5 @@ export default class TopPusher extends React.Component {
         )
     }
 }
-
 export { pickedSchoolExport as pickedSchoolFinal };
+export { pickedSchoolSep };
